@@ -28,7 +28,7 @@
                     </div>
                     <div class="inner" style="color: white">
                         <h2>{{ $totalBrand }}</h2>
-                        <p>Total brand added</p>
+                        <p>Total brand added </p>
                     </div>
                 </div>
             </div>
