@@ -5,7 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product;
-use App\Models\Cart;
+use App\Models\cart;
 use App\Models\Order;
 use Auth;
 
@@ -33,13 +33,13 @@ class UserController extends Controller
     }
 
     public function addProduct(Request $request, $product_id){
-        $cart = Cart::addToCart($product_id);
+        $cart = cart::addToCart($product_id);
         return redirect('checkout');
     }
 
     public function checkout(Request $request){
         if($request->isMethod('get')){
-            $orders = Cart::getProduct();
+            $orders = cart::getProduct();
             $totalAmount = Cart::getTotalAmount();
             return view('checkout', compact('orders','totalAmount'));
         }else{
