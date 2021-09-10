@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\OrderItem;
-use App\Models\Cart;
+use App\Models\cart;
 
 use Auth;
 
@@ -30,7 +30,7 @@ class Order extends Model
                 'total_amount' => $request->total_price
         ]);
 
-        $products = Cart::getProduct();
+        $products = cart::getProduct();
         foreach($products as $ord){
             OrderItem::create([
                 'order_id' => $order->id,
@@ -38,7 +38,7 @@ class Order extends Model
             ]);
         }
 
-        Cart::where('user_id', Auth::id())->delete();
+        cart::where('user_id', Auth::id())->delete();
         return $order;
     }
 
